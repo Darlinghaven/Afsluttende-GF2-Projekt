@@ -20,5 +20,20 @@ namespace Afsluttende_GF2_Projekt
         {
             InitializeComponent();
         }
+
+        private void OpenHome(object sender, RoutedEventArgs e)
+        {
+            MainContentArea.Content = new Views.Home();
+        }
+        private void OpenPass(object sender, RoutedEventArgs e)
+        {
+            MainContentArea.Content = new Views.Password();
+        }
+
+        private void OpenKPI(object sender, RoutedEventArgs e)
+        {
+            MainContentArea.Content = new Views.KPI();
+        }
+
     }
 }

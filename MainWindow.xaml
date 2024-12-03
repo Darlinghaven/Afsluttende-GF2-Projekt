@@ -5,8 +5,20 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Afsluttende_GF2_Projekt"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
+        Title="MainWindow" Height="700" Width="1000" ResizeMode="NoResize">
 
+
+    <Grid>
+        <StackPanel Margin="0,0,770,0">
+            <!-- Menu -->
+            <Button Content="Home" Height="50" Margin="10,10,10,10" Background="Transparent" BorderThickness="0" FontWeight="Bold" FontSize="24" Click="OpenHome"></Button>
+            <Button Content="Password" Height="50" Margin="10,10,10,10" Background="Transparent" BorderThickness="0" FontWeight="Bold" FontSize="24" Click="OpenPass"></Button>
+            <Button Content="KPI" Height="50" Margin="10,10,10,10" Background="Transparent" BorderThickness="0" FontWeight="Bold" FontSize="24" Click="OpenKPI"></Button>
+        </StackPanel>
+        <StackPanel Margin="235,0,0,0" Background="Transparent">
+            <!-- Main Window -->
+            <ContentControl x:Name="MainContentArea" Height="665" Width="708" />
+            <!-- Main Window -->
+        </StackPanel>
     </Grid>
 </Window>
