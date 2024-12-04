@@ -35,5 +35,9 @@ namespace Afsluttende_GF2_Projekt
             MainContentArea.Content = new Views.KPI();
         }
 
+        private void Toggle_btn_Checked(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
