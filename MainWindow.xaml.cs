@@ -27,7 +27,7 @@ namespace Afsluttende_GF2_Projekt
         }
         private void OpenPass(object sender, RoutedEventArgs e)
         {
-            MainContentArea.Content = new Views.Password();
+            MainContentArea.Content = new Password();
         }
 
         private void OpenKPI(object sender, RoutedEventArgs e)

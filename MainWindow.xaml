@@ -5,10 +5,12 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Afsluttende_GF2_Projekt"
         mc:Ignorable="d"
-        Title="Epicface inc. - Intranet" Height="700" Width="1000" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" FontFamily="montserrat"
+        Title="Gruppe 3 - Afsluttende projekt GF2" Height="700" Width="1000" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" FontFamily="montserrat"
         Icon="Assets/favicon.ico">
 
-
+    <!-- #d3d3d3 HEX code for main color 
+         #f4f4f4 HEX code for minor color
+         #bee6fd HEX code for accents -->
     <Grid>
         <Grid Background="Gray">
             <Image Source="Assets/flow.jpg"
@@ -23,15 +25,27 @@
                 IsReadOnly="True"
                 HorizontalContentAlignment="Center"
                 Background="Transparent"
-                BorderThickness="0">
+                BorderThickness="0"
+                Margin="0,10,0,10">
                 Menu
             </TextBox>
+            
             <!-- Menu -->
-            <Button Content="Home" Height="50" Margin="10,10,10,10" Background="Transparent" BorderThickness="0" FontWeight="Bold" FontSize="24" Click="OpenHome"></Button>
-            <Button Content="Password" Height="50" Margin="10,10,10,10" Background="Transparent" BorderThickness="0" FontWeight="Bold" FontSize="24" Click="OpenPass"></Button>
-            <Button Content="KPI" Height="50" Margin="10,10,10,10" Background="Transparent" BorderThickness="0" FontWeight="Bold" FontSize="24" Click="OpenKPI"></Button>
+            <StackPanel>
+
+                <Button Height="58" Margin="10,10,10,5" Background="Transparent" BorderThickness="0" FontWeight="Bold" FontSize="24" Click="OpenHome" Grid.Column="1">
+                    <Image Source="Assets/Home.png"></Image>
+                </Button>
+                <Button Height="50" Margin="8,10,10,10" Background="Transparent" BorderThickness="0" FontWeight="Bold" FontSize="24" Click="OpenPass">
+                    <Image Source="Assets/Pass2.png"></Image>
+                </Button>
+                <Button Height="58" Margin="5,10,10,10" Background="Transparent" BorderThickness="0" FontWeight="Bold" FontSize="24" Click="OpenKPI">
+                    <Image Source="Assets/KPI2.png" Width="177" Height="48"></Image>
+                </Button>
+            </StackPanel>
         </StackPanel>
         <StackPanel Margin="167,0,0,0" Background="Transparent">
+            
             <!-- Main Window -->
             <ContentControl x:Name="MainContentArea" Height="645" Width="799" Background="Transparent" Margin="0,10,0,0"/>
             <!-- Main Window -->
