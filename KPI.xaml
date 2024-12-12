@@ -7,7 +7,8 @@
         <TextBlock Text="Welcome to KPI!" FontSize="24" HorizontalAlignment="Center" VerticalAlignment="Center" />
         <Button
             x:Name="VisDataKnap"
-            FontWeight="Bold" Margin="10,595,543,10"
+            FontWeight="Bold"
+            Height="50" Margin="10,590,531,10"
             Content="Vis/skjul data"
             Click="Data_Button_Click"/>
 
@@ -18,9 +19,10 @@
             Background="Transparent"
             Visibility="Hidden"
             HorizontalAlignment="Stretch"
-            VerticalAlignment="Stretch"/>
-        <!--<Button Content="Sort Ascending" Click="OnSortButtonClick" Height="50" Width="150" Margin="540,590,10,10"/>
-        <Button Content="Sort Descending" Click="OnSortButtonClick" Height="50" Width="150" Margin="275,590,275,10"/>-->
+            VerticalAlignment="Stretch"
+            CanUserAddRows="False"
+            CanUserSortColumns="True"
+            IsReadOnly="True"/>
     </Grid>
 
 </UserControl>

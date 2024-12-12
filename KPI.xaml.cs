@@ -1,9 +1,8 @@
-﻿using System;
-using System.Data;
-using System.Windows;
+﻿﻿using System.Windows;
 using System.Windows.Controls;
 using Microsoft.Office.Interop.Excel;
 using Range = Microsoft.Office.Interop.Excel.Range;
+using DataTable = System.Data.DataTable;
 
 namespace Afsluttende_GF2_Projekt.Views
 {
@@ -44,57 +43,50 @@ namespace Afsluttende_GF2_Projekt.Views
                 wb = excel.Workbooks.Open(filePath);
                 ws = wb.Worksheets[1];
 
-                // Use UsedRange to find cells with data
+                // Brug UsedRange til at finde celler med data
                 Range usedRange = ws.UsedRange;
                 int rowCount = usedRange.Rows.Count;
                 int colCount = usedRange.Columns.Count;
 
-                // Create a DataTable to hold the data
-                System.Data.DataTable dataTable = new System.Data.DataTable();
+                // Opret en tabel til at holde data
+                DataTable dataTable = new DataTable();
 
-                // Add columns to DataTable (using the first row as header)
+                // Tilføj kolonnenavne fra første række
                 for (int col = 1; col <= colCount; col++)
                 {
                     string columnName = usedRange.Cells[1, col].Value2?.ToString() ?? $"Column {col}";
                     dataTable.Columns.Add(columnName);
                 }
 
-                // Add data to the DataTable (skip the first row since it’s the header)
-                for (int row = 2; row <= rowCount; row++) // Skip headers
+                // Tilføj data fra resten af rækkerne
+                for (int row = 2; row <= rowCount; row++) // Start fra række 2 for at springe overskrifter over
                 {
-                    DataRow dataRow = dataTable.NewRow();
-
-                    bool hasDataInRow = false;
+                    var dataRow = dataTable.NewRow();
+                    bool hasData = false;
 
                     for (int col = 1; col <= colCount; col++)
                     {
                         object cellValue = usedRange.Cells[row, col].Value2;
-
-                        if (cellValue != null && !string.IsNullOrEmpty(cellValue.ToString()))
+                        if (cellValue != null && !string.IsNullOrWhiteSpace(cellValue.ToString()))
                         {
                             dataRow[col - 1] = cellValue.ToString();
-                            hasDataInRow = true; // Mark if there's any data in this row
-                        }
-                        else
-                        {
-                            dataRow[col - 1] = DBNull.Value; // If no data, set it as null
+                            hasData = true; // Marker, at der er data i denne række
                         }
                     }
 
-                    // Only add rows with data
-                    if (hasDataInRow)
+                    // Tilføj kun rækker med data til tabellen
+                    if (hasData)
                     {
                         dataTable.Rows.Add(dataRow);
                     }
                 }
 
-                // Bind the DataTable to the DataGrid
+                // Bind datatabellen til DataGrid
                 ExcelDataGrid.ItemsSource = dataTable.DefaultView;
-
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Error loading Excel data: {ex.Message}");
+                MessageBox.Show($"Fejl ved indlæsning af Excel: {ex.Message}");
             }
             finally
             {
